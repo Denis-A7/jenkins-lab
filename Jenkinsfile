@@ -1,17 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK21'   // Must match Jenkins Global Tool name
-    }
-
     stages {
-
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Denis-A7/jenkins-lab.git'
-            }
-        }
 
         stage('Build') {
             steps {
@@ -23,17 +13,6 @@ pipeline {
             steps {
                 bat 'java Hello'
             }
-        }
-    }
-
-    post {
-        success {
-            archiveArtifacts artifacts: '*.class', fingerprint: true
-            echo 'Build Successful! Artifact Archived.'
-        }
-
-        failure {
-            echo 'Build Failed!'
         }
     }
 }
