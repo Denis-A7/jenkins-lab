@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'Java17'   // Must match Jenkins Global Tool name
+        jdk 'JDK21'   // Must match Jenkins Global Tool name
     }
 
     stages {
