@@ -1,8 +1,11 @@
 pipeline {
     agent any
 
-    stages {
+    tools {
+        jdk 'JDK21'
+    }
 
+    stages {
         stage('Build') {
             steps {
                 bat 'javac Hello.java'
@@ -13,6 +16,15 @@ pipeline {
             steps {
                 bat 'java Hello'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build Successful!'
+        }
+        failure {
+            echo 'Build Failed!'
         }
     }
 }
